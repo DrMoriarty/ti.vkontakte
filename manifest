@@ -11,8 +11,8 @@ copyright: Copyright © 2013 by Vasiliy Makarov
 
 
 # these should not be edited
-name: vkontakte
+name: ti.vkontakte
 moduleid: ti.vkontakte
 guid: 91b99609-4b5f-438d-bfe3-c236bd4e8919
-platform: mobileweb
+platform: commonjs
 minsdk: 3.1.3.GA

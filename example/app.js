@@ -16,11 +16,20 @@ win.open();
 var vkontakte = require('ti.vkontakte');
 Ti.API.info("module is => " + vkontakte);
 
-label.text = vkontakte.example();
+vkontakte.appid = '1234567';
+vkontakte.permissions = [vkontakte.PERMISSION.POST_WALL, vkontakte.PERMISSION.FRIENDS];
+vkontakte.addEventListener('login', function(e) {
+    if(e.success) {
+        alert('user: ' + vk.user + ' and token: ' + vk.token);
+    } else if(e.cancelled) {
+        // user pressed cancel button
+    } else {
+        alert(e.error);
+    }
+});
 
-Ti.API.info("module exampleProp is => " + vkontakte.exampleProp);
-vkontakte.exampleProp = "This is a test value";
-
+vkontakte.authorize();
+        
 if (Ti.Platform.name == "android") {
 	var proxy = vkontakte.createExample({
 		message: "Creating an example Proxy",

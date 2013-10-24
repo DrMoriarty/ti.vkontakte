@@ -408,9 +408,9 @@ class Compiler(object):
 		name = self.manifest['name'].lower()
 		moduleid = self.manifest['moduleid'].lower()
 		version = self.manifest['version']
-		install_path = 'modules/mobileweb/%s/%s' % (moduleid, version)
+		install_path = 'modules/commonjs/%s/%s' % (moduleid, version)
 		
-		zip_file = os.path.join(self.module_path, '%s-mobileweb-%s.zip' % (moduleid,version))
+		zip_file = os.path.join(self.module_path, '%s-commonjs-%s.zip' % (moduleid,version))
 		if os.path.exists(zip_file):
 			os.remove(zip_file)
 		
@@ -423,12 +423,12 @@ class Compiler(object):
 			'description': self.manifest['description'],
 			'version': self.manifest['version'],
 			'directories': {
-				'lib': './src'
+				'lib': '.'
 			},
 			'main': self.main
 		}, indent=4, sort_keys=True))
 		
-		self.zip_dir(zf, 'build', '%s/src' % install_path)
+		self.zip_dir(zf, 'build', install_path)
 		self.zip_dir(zf, 'example', '%s/example' % install_path)
 		
 		docs = self.generate_doc()
