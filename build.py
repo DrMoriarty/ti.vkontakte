@@ -430,6 +430,8 @@ class Compiler(object):
 		
 		self.zip_dir(zf, 'build', install_path)
 		self.zip_dir(zf, 'example', '%s/example' % install_path)
+                self.zip_dir(zf, 'platform', '%s/platform' % install_path)
+                self.zip_dir(zf, 'assets', '%s/assets' % install_path)
 		
 		docs = self.generate_doc()
 		if docs != None:

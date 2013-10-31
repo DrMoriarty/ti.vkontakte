@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="CaptchaNeededText">ВКонтакте просит Вас ввести эти символы в поле ввода</string>
+    <string name="Ok">Продолжить</string>
+    <string name="Cancel">Отмена</string>
+</resources>

@@ -12,7 +12,6 @@ var label = Ti.UI.createLabel();
 win.add(label);
 win.open();
 
-// TODO: write your module tests here
 var vkontakte = require('ti.vkontakte');
 Ti.API.info("module is => " + vkontakte);
 
@@ -21,28 +20,28 @@ vkontakte.permissions = [vkontakte.PERMISSION.POST_WALL, vkontakte.PERMISSION.FR
 vkontakte.addEventListener('login', function(e) {
     if(e.success) {
         alert('user: ' + vk.user + ' and token: ' + vk.token);
+        vk.makeAPICall('wall.post', {
+            message: 'This is a test post to my VKontakte wall.'
+        });
     } else if(e.cancelled) {
         // user pressed cancel button
+	alert('User pressed cancel button');
     } else {
         alert(e.error);
     }
 });
 
+vkontakte.addEventListener('error', function(e) {
+    alert(e.error);
+});
+
+vk.addEventListener('result', function(e) {
+    if(e.result.hasOwnProperty('post_id')) {
+        Ti.API.info('New post id: '+e.result.post_id);
+	alert('New message id: '+e.result.post_id);
+    }
+});
+
 vkontakte.authorize();
         
-if (Ti.Platform.name == "android") {
-	var proxy = vkontakte.createExample({
-		message: "Creating an example Proxy",
-		backgroundColor: "red",
-		width: 100,
-		height: 100,
-		top: 100,
-		left: 150
-	});
-
-	proxy.printMessage("Hello world!");
-	proxy.message = "Hi world!.  It's me again.";
-	proxy.printMessage("Hello world!");
-	win.add(proxy);
-}
 

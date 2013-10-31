@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="CaptchaNeededText">VKontakte wants you enter this symbols in the text field below</string>
+    <string name="Ok">Ok</string>
+    <string name="Cancel">Cancel</string>
+</resources>
