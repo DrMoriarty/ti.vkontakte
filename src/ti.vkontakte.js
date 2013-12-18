@@ -205,6 +205,10 @@ function makeVK(vk)
                 }
                 wnd.close();
             }
+            if(e.url.lastIndexOf('http://vk.com/login.php', 0) == 0) {
+                vk.fireEvent('login', {success: false, error: 'User canceled login dialog', cancelled: true});
+                wnd.close();
+            }
         });
         webView.addEventListener('error', function(e) {
             if(!e.success) {
